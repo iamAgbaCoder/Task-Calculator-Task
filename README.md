@@ -3,13 +3,12 @@
 A simple Python-based tax calculator that computes tax, gross pay, and net pay based on Nigerian tax rules.
 
 ## 💡 Tax Rules
-```
-- First ₦200,000 of salary is **tax-free**
-- Next ₦500,000 is taxed at **10%**
-- Next ₦300,000 is taxed at **15%**
-- Any amount **above ₦1,000,000** is taxed at **20%**
-- **Bonuses are not taxed**, but are included in gross pay
-```
+
+- First ₦200,000 of salary is tax-free
+- Next ₦500,000 is taxed at 10%
+- Next ₦300,000 is taxed at 15%
+- Any amount above ₦1,000,000 is taxed at 20%
+- Bonuses are not taxed, but are included in gross pay
 
 ## 📦 Features
 ```
@@ -20,8 +19,8 @@ A simple Python-based tax calculator that computes tax, gross pay, and net pay b
 
 ## ✅ Requirements
 ```
-- Python 3.12+
-- Install dependencies:
+Python 3.12+
+Install dependencies
 ```
 
 ```bash
