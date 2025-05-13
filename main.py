@@ -1,13 +1,14 @@
 from decimal import Decimal
 from dataclasses import dataclass
 
-
+# Holds the input data: salary and bonus (both as Decimals)
 @dataclass
 class TaxRequest:
     salary: Decimal
     bonus: Decimal
 
 
+# Holds the result of the tax calculation
 @dataclass
 class TaxResponse:
     tax_amount: Decimal
@@ -32,10 +33,12 @@ def calculate_tax(request: TaxRequest) -> TaxResponse:
     """
     salary = request.salary
     bonus = request.bonus
+    
+    # Only the portion of salary above ₦200,000 is taxed
     taxable_income = max(Decimal("0.00"), salary - Decimal("200000.00"))
-    tax = Decimal("0.00")
+    tax = Decimal("0.00") # Start with zero tax
 
-    # Tax on next ₦500,000 at 10%
+    # First ₦500,000 after the tax-free portion is taxed at 10%
     if taxable_income > 0:
         tier_1 = min(taxable_income, Decimal("500000.00"))
         tax += tier_1 * Decimal("0.10")
@@ -54,6 +57,7 @@ def calculate_tax(request: TaxRequest) -> TaxResponse:
     gross_pay = salary + bonus
     net_pay = gross_pay - tax
 
+    # Return all values rounded to two decimal places
     return TaxResponse(
         tax_amount=tax.quantize(Decimal("0.01")),
         gross_pay=gross_pay.quantize(Decimal("0.01")),
